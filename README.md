@@ -37,3 +37,17 @@ Or </br>
 To connect to a database<br />
 docker-compose exec mysql bash<br />
 mysql -uroot -psecret<br />
+
+
+# Api
+
+Get http://localhost:8080/api/wallet - get all data from database
+
+Post http://localhost:8080/api/wallet - create transaction and update balance
+
+Get http://localhost:8080/api/wallet/balance?walletId=1 - get balance by walletId
+
+
+# SQL a request that will return the amount received for the refund reason for the last 7 days.
+
+SELECT SUM(value) AS sum FROM transactions where created_at >= date_sub(now(), interval 7 day) AND reason = 'refund';
